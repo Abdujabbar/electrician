@@ -63,8 +63,8 @@ func (g *Game) Move(i, j int) error {
 	}
 
 	for x := 0; x < len(moves); x++ {
-		if g.isCellExists(moves[x][0], moves[x][1]) {
-			g.toggle(moves[x][0], moves[x][1])
+		if g.isCellExists(moves[x][0]+i, moves[x][1]+j) {
+			g.toggle(moves[x][0]+i, moves[x][1]+j)
 		}
 	}
 	g.randomTurnOff()
