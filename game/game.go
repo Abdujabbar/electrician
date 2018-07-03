@@ -1,6 +1,7 @@
 package game
 
 import (
+	"fmt"
 	"math/rand"
 	"time"
 )
@@ -24,7 +25,9 @@ type Game struct {
 
 //NewGame generates new game instance
 func NewGame(sz int) *Game {
-
+	if sz < 5 {
+		panic("size cannot be less than 5")
+	}
 	matrix := [][]bool{}
 	for i := 0; i < sz; i++ {
 		matrix = append(matrix, []bool{})
@@ -35,10 +38,9 @@ func NewGame(sz int) *Game {
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
 
-	matrix[r1.Intn(5)][r1.Intn(5)] = true
-	matrix[r1.Intn(5)][r1.Intn(5)] = true
-	matrix[r1.Intn(5)][r1.Intn(5)] = true
-	matrix[r1.Intn(5)][r1.Intn(5)] = true
+	for i := 0; i < sz; i++ {
+		matrix[r1.Intn(sz)][r1.Intn(sz)] = true
+	}
 
 	return &Game{
 		board:     matrix,
@@ -55,9 +57,9 @@ func (g *Game) toggle(i, j int) {
 }
 
 //Move method
-func (g *Game) Move(i, j int) {
+func (g *Game) Move(i, j int) error {
 	if !g.isCellExists(i, j) {
-		return
+		return fmt.Errorf("not valid indexes: %d, %d", i, j)
 	}
 
 	for x := 0; x < len(moves); x++ {
@@ -65,6 +67,7 @@ func (g *Game) Move(i, j int) {
 			g.toggle(moves[x][0], moves[x][1])
 		}
 	}
+	return nil
 }
 
 func (g *Game) randomToggle() {

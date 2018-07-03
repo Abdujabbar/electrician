@@ -19,7 +19,8 @@ func NewGenerator(availableChars string, length int) *Generator {
 	}
 }
 
-func (g *Generator) generate() string {
+//Generate generates random string
+func (g *Generator) Generate() string {
 	r := []byte{}
 	for i := 0; i < g.length; i++ {
 		r = append(r, g.availableChars[rand.Intn(len(g.availableChars))])
