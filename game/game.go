@@ -67,13 +67,14 @@ func (g *Game) Move(i, j int) error {
 			g.toggle(moves[x][0], moves[x][1])
 		}
 	}
+	g.randomTurnOff()
 	return nil
 }
 
-func (g *Game) randomToggle() {
+func (g *Game) randomTurnOff() {
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
-	g.toggle(r1.Intn(g.boardSize), r1.Intn(g.boardSize))
+	g.board[r1.Intn(g.boardSize)][r1.Intn(g.boardSize)] = false
 }
 
 func (g *Game) isWin() bool {

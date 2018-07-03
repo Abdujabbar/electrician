@@ -1,0 +1,9 @@
+.cell {
+    min-height: 60px;
+    margin: 3px;
+    border: 2px solid #01b7e6;
+}
+
+.cell.active{
+    background: #00cbff;
+}
