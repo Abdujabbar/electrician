@@ -67,6 +67,7 @@ func (g *Game) Move(i, j int) error {
 			g.toggle(moves[x][0]+i, moves[x][1]+j)
 		}
 	}
+	g.toggle(i, j)
 	g.randomTurnOff()
 	return nil
 }

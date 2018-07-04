@@ -1,5 +1,7 @@
 $(document).ready(function(){
     $(".cell").on("click", function(){
+        if($(this).hasClass("active"))
+            return
         if($(this).hasClass("active")) {
             $(this).find("input[type=hidden]").val("false")
         } else {
@@ -24,14 +26,15 @@ $(document).ready(function(){
                 } else {
                     for(var i = 0; i < response.board.length; i++) {
                         for(var j = 0; j < response.board[i].length; j++) {
+                            var input = $(".grid-board .matrix-row:nth-child(" + (i + 1) + ")").find(".cell:nth-child(" + (j + 1) + ")")
+                            $(input).find("input[type=hidden]").val(response.board[i][j])
                             if(response.board[i][j]) {
-                                $(".grid-board .matrix-row:nth-child(" + i + ")").find(".cell:nth-child(" + j + ")").addClass("active");
+                                $(input).addClass("active");
                             } else {
-                                $(".grid-board .matrix-row:nth-child(" + i + ")").find(".cell:nth-child(" + j + ")").removeClass("active");
+                                $(input).removeClass("active");
                             }
                         }
                         console.log(response.board[i])
-                        console.log("---------------")
                     }
                 }
             }

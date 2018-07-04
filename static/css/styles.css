@@ -7,4 +7,5 @@
 
 .cell.active{
     background: #00cbff;
+    cursor: default;
 }
