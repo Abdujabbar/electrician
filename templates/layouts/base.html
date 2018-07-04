@@ -18,12 +18,15 @@
 <script src="/js/scripts.js"></script>
   <!-- Optional theme -->
 <link rel="stylesheet" href="/css/styles.css" />
-
+<script>
+  var sourceHash = "{{.Hash}}"
+  console.log(sourceHash)
+</script>
 </head>
 <body>
   <div class="container">
     <div class="content">
-      {{template "body"}}
+      {{template "body" .}}
     </div>
   </div>
 </body>

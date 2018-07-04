@@ -86,3 +86,13 @@ func (g *Game) isWin() bool {
 	}
 	return win
 }
+
+//GetSize returns board size
+func (g *Game) GetSize() int {
+	return g.boardSize
+}
+
+//GetBoard returns matrix of board
+func (g *Game) GetBoard() [][]bool {
+	return g.board
+}

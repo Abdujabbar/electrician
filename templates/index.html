@@ -4,12 +4,16 @@
             <h3 class="text-center">Electrician Game</h3>
             <hr />
             <div class="row">
-                <div class="col-md-11 col-md-offset-1">
-                    <div class="col-md-2 cell active">&nbsp;</div>
-                    <div class="col-md-2 cell">&nbsp;</div>
-                    <div class="col-md-2 cell active">&nbsp;</div>
-                    <div class="col-md-2 cell">&nbsp;</div>
-                    <div class="col-md-2 cell">&nbsp;</div>
+                <div class="col-md-11 col-md-offset-1 grid-board">
+                    {{range $row, $x := $.Game.GetBoard}}
+                        <div class="matrix-row">
+                            {{range $col, $value := $x}}
+                                <div class="col-md-2 cell {{if $value}}active{{end}}">
+                                    <input type="hidden" name="board[{{$row}}][{{$col}}]" value="{{$value}}" />
+                                </div>
+                            {{end}}
+                        </div>
+                    {{end}}
                 </div>
             </div>
         </div>
