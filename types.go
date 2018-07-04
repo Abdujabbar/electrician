@@ -4,9 +4,10 @@ import "github.com/Abdujabbor/electrician/game"
 
 //MoveResponse struct
 type MoveResponse struct {
-	Success bool     `json:"success"`
-	Error   string   `json:"error"`
-	Board   [][]bool `json:"board"`
+	Success     bool     `json:"success"`
+	Error       string   `json:"error"`
+	Board       [][]bool `json:"board"`
+	MoveCounter int      `json:"moves"`
 }
 
 //GamesList type struct

@@ -19,8 +19,9 @@ var moves = [][]int{
 
 //Game struct type
 type Game struct {
-	board     [][]bool
-	boardSize int
+	board       [][]bool
+	boardSize   int
+	moveCounter int
 }
 
 //NewGame generates new game instance
@@ -61,7 +62,7 @@ func (g *Game) Move(i, j int) error {
 	if !g.isCellExists(i, j) {
 		return fmt.Errorf("not valid indexes: %d, %d", i, j)
 	}
-
+	g.moveCounter++
 	for x := 0; x < len(moves); x++ {
 		if g.isCellExists(moves[x][0]+i, moves[x][1]+j) {
 			g.toggle(moves[x][0]+i, moves[x][1]+j)
@@ -96,4 +97,9 @@ func (g *Game) GetSize() int {
 //GetBoard returns matrix of board
 func (g *Game) GetBoard() [][]bool {
 	return g.board
+}
+
+//GetMoveCounter returns move counter
+func (g *Game) GetMoveCounter() int {
+	return g.moveCounter
 }
