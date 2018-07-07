@@ -8,6 +8,7 @@ type MoveResponse struct {
 	Error       string   `json:"error"`
 	Board       [][]bool `json:"board"`
 	MoveCounter int      `json:"moves"`
+	Finished    bool     `json:"finished"`
 }
 
 //GamesList type struct

@@ -56,6 +56,7 @@ func move(w http.ResponseWriter, r *http.Request) {
 	}
 	moveResponse.Board = currentGame.GetBoard()
 	moveResponse.MoveCounter = currentGame.GetMoveCounter()
+	moveResponse.Finished = currentGame.IsFinished()
 	response, _ := json.Marshal(moveResponse)
 	w.Write(response)
 }

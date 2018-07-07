@@ -24,6 +24,12 @@ $(document).ready(function(){
                 if(!response.success) {
                     alert(response.error)
                 } else {
+                    $(".moves-counter").text(response.moves)
+                    if(response.finished) {
+                        alert("Congrats, You have win!")
+                        window.location.reload()
+                        return
+                    }
                     for(var i = 0; i < response.board.length; i++) {
                         for(var j = 0; j < response.board[i].length; j++) {
                             var input = $(".grid-board .matrix-row:nth-child(" + (i + 1) + ")").find(".cell:nth-child(" + (j + 1) + ")")
@@ -34,7 +40,6 @@ $(document).ready(function(){
                                 $(input).removeClass("active");
                             }
                         }
-                        console.log(response.board[i])
                     }
                 }
             }

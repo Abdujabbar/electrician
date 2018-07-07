@@ -24,7 +24,22 @@ func TestMoveOnGame(t *testing.T) {
 
 func TestWinOnGame(t *testing.T) {
 	gm := NewGame(5)
-	if gm.isWin() {
+	if gm.IsFinished() {
 		t.Error("Error while declaring game, on start user cannot be winner")
+	}
+}
+
+func TestMoveAvailable(t *testing.T) {
+	gm := NewGame(5)
+	var err error
+	for i := 0; i < 5; i++ {
+		for j := 0; j < 5; j++ {
+			if gm.isTurnedOn(i, j) {
+				err = gm.Move(i, j)
+				if err.Error() != "cell already turned on" {
+					t.Error("Error on checking is turned on cell")
+				}
+			}
+		}
 	}
 }

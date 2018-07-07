@@ -1,14 +1,14 @@
 {{define "body"}}
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-xs-6 col-xs-offset-3">
             <h3 class="text-center">Electrician Game</h3>
             <hr />
             <div class="row">
-                <div class="col-md-11 col-md-offset-1 grid-board">
+                <div class="col-xs-11 col-xs-offset-1 grid-board">
                     {{range $row, $x := $.Game.GetBoard}}
                         <div class="matrix-row">
                             {{range $col, $value := $x}}
-                                <div class="col-md-2 cell {{if $value}}active{{end}}">
+                                <div class="col-xs-2 cell {{if $value}}active{{end}}">
                                     <input type="hidden" name="board[{{$row}}][{{$col}}]" value="{{$value}}" />
                                 </div>
                             {{end}}
@@ -16,6 +16,35 @@
                     {{end}}
                 </div>
             </div>
+        </div>
+        <div class="col-xs-3">
+            <h3 class="text-center">Counter</h3>
+            <hr />
+            <div class="row">
+                <div class="col-xs-3">
+                    Moves:
+                </div>
+                <div class="col-xs-6">
+                    <p class="moves-counter">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+        <h5>Условия игры</h5>
+        <hr />
+        <p>
+            Игра проходит на поле 5х5 ячеек, где каждая ячейка представляет собой “лампочку”.
+        </p>
+        <p>“Лампочка” может иметь два состояния: “Горит” и “Не горит”. </p>
+        <p>“Электрик” (т.е. игрок) кликом на любую ячейку-”лампочку” переводит ее в состояние “Горит”, 
+            при этом, все близлежащие “лампочки” (включая диагональные) меняют свое текущее состояние на противоположное. 
+        </p>
+        <p>Для дополнительной сложности после каждого хода с шансом 1 к 25 может погаснуть одна любая лампочка. 
+            После каждого хода, увеличивается счетчик ходов.
+        </p>
         </div>
     </div>
 {{end}}
