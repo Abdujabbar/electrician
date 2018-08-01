@@ -5,4 +5,6 @@ go:
   - 1.x
 
 script:
+  - go test -v -covermode=count -coverprofile=coverage.out
+    $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=https://travis-ci.org/Abdujabbor/electrician -repotoken op2HIxJuopKOF4CT3zvDDWw7ysQcPlxuM
   - go test -v -race ./...
