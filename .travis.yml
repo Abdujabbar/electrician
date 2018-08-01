@@ -1,10 +1,12 @@
 language: go
-
 go:
-  - 1.9.x
-  - 1.x
-
+- 1.9.x
+- 1.x
 script:
-  - go test -v -covermode=count -coverprofile=coverage.out
-    $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=https://travis-ci.org/Abdujabbor/electrician -repotoken op2HIxJuopKOF4CT3zvDDWw7ysQcPlxuM
-  - go test -v -race ./...
+- go test -v -covermode=count -coverprofile=coverage.out $HOME/gopath/bin/goveralls
+  -coverprofile=coverage.out -service=https://travis-ci.org/Abdujabbor/electrician
+  -repotoken $COVERALLS_TOKEN
+- go test -v -race ./...
+env:
+  global:
+    secure: YEQGODc7m9xnhi1DQRQuecItpkVRx9z8bvty9ZQuR+seGmhUaNeImkWO7yzWOSu0VK9lF7EPaUmawxJk1bPi6YIalH7hVfsdyBTgGxZa5kKhe7nswBYcC3KCIEGZ3tB+4j70rt7Xp+T9vk+sM6cx/Jx8BfEZXbNuYhalWQIi2chHpTAa+l29LZTRcS5Z2dgxGhU5DUAShC4EZGPb8u8oYXDTHXp5ZsqYwUlgfoa5QqeiaM71EDAjeyLoFYHDAVHccAhC4aed9tWs0QZZ2bOJH+JaiVFH6nt4Ho2iD9BKlE71dO25YKgFa8wQ6S0dyXaX2OtiifSSKOAw/qhlRAILfpE14goBetu5dm3+G/kaVJFaV631JXmlEMjNPkrCuRcymhyJw7O1vsweQDWZWSiWUANNWbBccbU4jA3E8XmcrcXX06euv7WMauicMtc4kOcQSNbmOZztCCeJvsnnzz8jqoKjtUDbCJEpo9wOGWpiQRBxQp5YwaO3kq3zeBgs8jvWo5eX1BqUTuwEpHcnueYZE3sIy598dmSlPgRsvyVI703moMXL4Isi4W4aCl3VH8eaYwjXmdNT0G+WgDLDfOqaJjJHBCrGO9Ls2qPI+pwLiKJr5EWtsipQdfiLTHfriyFq1cBwxy22Ts8f0ugPVqV7XphW4YPHfCkTRfF6e2BX0tQ=
