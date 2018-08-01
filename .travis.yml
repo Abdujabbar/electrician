@@ -1,0 +1,13 @@
+language: go
+
+go:
+  - 1.9.x
+  - 1.x
+
+before_install:
+  - travis_retry composer self-update
+  - composer install
+
+
+script:
+  - go test -v -race ./...
